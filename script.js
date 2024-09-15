@@ -34,11 +34,11 @@ function resetGame() {
 // **************************************
 
 // the list of enemies is an array of size 5 - but it could be larger ...
-const enemies = new StaticArray(5); 
+const enemies = new StaticArray(7);
 
 function createInitialEnemies() {
- // create five enemies
-  for (let i = 0; i < 5; i++) {
+  // create five enemies
+  for (let i = 0; i < 7; i++) {
     enemies[i] = spawnNewEnemy();
   }
 }
@@ -47,14 +47,13 @@ function createInitialEnemies() {
 function spawnNewEnemy() {
   const enemy = createEnemy();
   // TODO: need to add new enemy to list of enemies, here!
-  
+
   return enemy;
 }
 
 // removes an enemy object from the list of enemies
 function removeEnemy(enemy) {
   // TODO: need to find enemy object in list of enemies, and remove it
-  
 }
 
 // returns the number of enemy objects in the list of enemies
@@ -122,6 +121,7 @@ function killEnemy(enemy) {
     console.log("complete kill");
     enemy.visual.remove();
     removeEnemy(enemy);
+    spawnNewEnemy(enemy);
   }
 }
 
@@ -209,7 +209,7 @@ function loop() {
 
 function enemyHitBottom(enemy) {
   console.log("Enemy attacked base!");
-  
+
   // lose health
   health -= 5;
   // display crash on enemy
